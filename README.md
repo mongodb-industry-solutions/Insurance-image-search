@@ -15,4 +15,4 @@ Here's an example of a query
 
 And its output
 
-![](top_5.jpg)
+![](top_5.png)
