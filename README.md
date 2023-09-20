@@ -9,6 +9,8 @@ The steps outlined in the code are the following:
 4. Get image embeddings and load them to Atlas
 5. Run an image similarity query
 
-Here's an example of the input
+Here's an example of an input
+
+![](test.jpg)
 
 anf of the output
