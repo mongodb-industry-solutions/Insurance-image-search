@@ -8,3 +8,7 @@ The steps outlined in the code are the following:
 3. Connect to MongoDB Atlas
 4. Get image embeddings and load them to Atlas
 5. Run an image similarity query
+
+Here's an example of the input
+
+anf of the output
