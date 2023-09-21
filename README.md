@@ -9,7 +9,7 @@ The steps outlined in the code are the following:
 4. Get image embeddings and load them to Atlas
 5. Run an image similarity query
 
-Here's an example of a query
+Here's an example of a query of an image found online
 
 ![](test.jpg)
 
