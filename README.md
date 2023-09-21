@@ -6,8 +6,12 @@ The steps outlined in the code are the following:
 1. Define an image embedder based on the pytorch version of squeezenet
 2. Download and save to file the public "car damage" dataset. The dataset contains images of car damages
 3. Connect to MongoDB Atlas
-4. Get image embeddings and load them to Atlas
-5. Run an image similarity query
+4. Create the Search index (see our index in the below image)
+
+![](index.png)
+
+6. Get image embeddings and load them to Atlas
+7. Run an image similarity query
 
 Here's an example of a query of an image found online
 
