@@ -6,7 +6,7 @@ The steps outlined in the code are the following:
 1. Define an image embedder based on the pytorch version of squeezenet
 2. Download and save to file the public "car damage" dataset. The dataset contains images of car damages
 3. Connect to MongoDB Atlas
-4. Create the Search index (see our index in the below image)
+4. Create the Search index in Atlas (see our index in the below image)
 
 <img src="index.png" width="50%" height="50%">
 
