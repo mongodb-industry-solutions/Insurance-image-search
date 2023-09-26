@@ -24,7 +24,8 @@ The steps outlined in the code are the following:
 ```
 
 6. Get image embeddings and load them to Atlas
-7. Run an image similarity query
+7. Type "crashed windshield" into Google Image search and save one of the images into the car_damage folder with the name test.jpg.
+8. Run an image similarity query
 
 Here's an example of a query of an image found online
 
