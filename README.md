@@ -8,7 +8,7 @@ The steps outlined in the code are the following:
 3. Connect to MongoDB Atlas
 4. Create the Search index in Atlas (see our index in the below image)
 
-<img src="index.png" width="50%" height="50%">
+<img src="Index.png" width="50%" height="50%">
 
 6. Get image embeddings and load them to Atlas
 7. Run an image similarity query
