@@ -6,7 +6,7 @@ The steps outlined in the code are the following:
 1. Define an image embedder based on the pytorch version of squeezenet
 2. Download and save to file the public "car damage" dataset. The dataset contains images of car damages
 3. Connect to MongoDB Atlas
-4. Create the Search index in Atlas following the instructions of this tutorial (Step 4) and using the following configuration
+4. Create the Search index in Atlas following the instructions of [this](https://www.mongodb.com/developer/products/atlas/building-generative-ai-applications-vector-search-open-source-models/?hideMenu=1) tutorial (Step 4) and using the following configuration
 
 ```json
 {
