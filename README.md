@@ -14,10 +14,6 @@ This demo showcases the functionalities and features of the Insurance Image Sear
 
 Learn more about MongoDB [here](https://www.mongodb.com/docs/manual/).
 
-## High Level Architecture
-
-[High level architecture diagram like the ones in this slides: [google slides](https://docs.google.com/presentation/d/1vo8Y8mBrocJtzvZc_tkVHZTsVW_jGueyUl-BExmVUtI/edit#slide=id.g30c066974c7_0_3536)]
-
 ## Tech Stack
 
 ### Frontend
