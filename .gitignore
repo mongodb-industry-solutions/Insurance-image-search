@@ -1,0 +1,7 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+car_damage/
+*.pyc

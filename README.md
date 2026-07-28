@@ -1,83 +1,160 @@
-# Insurance Image Search
+# Insurance Claims Image Vector Search with MongoDB
 
-This demo showcases the functionalities and features of the Insurance Image Search application. It leverages MongoDB's Vector Search capabilities to perform similarity searches on insurance-related images. By embedding and comparing image vectors, this demo enables users to efficiently search for visually similar images, streamlining processes in the insurance industry.
+**Tech stack tags:** `mongodb` `mongodb-atlas` `mongodb-vector-search` `python` `jupyter-notebook` `pymongo` `torchvision` `computer-vision` `image-similarity` `insurance-claims`
 
-## Where MongoDB Shines?
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-00ED64?logo=mongodb&logoColor=001E2B)
+![MongoDB Vector Search](https://img.shields.io/badge/MongoDB%20Vector%20Search-001E2B?logo=mongodb&logoColor=00ED64)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
+![PyMongo](https://img.shields.io/badge/PyMongo-47A248?logo=mongodb&logoColor=white)
+![TorchVision](https://img.shields.io/badge/TorchVision-EE4C2C?logo=pytorch&logoColor=white)
+![Computer Vision](https://img.shields.io/badge/Computer%20Vision-4B5563)
 
-- **Vector Storage and Similarity Search:** MongoDB’s flexible schema and [Atlas Vector Search](https://www.mongodb.com/products/platform/atlas-vector-search) capabilities make it ideal for storing image embeddings and running efficient similarity comparisons. In this demo, the embeddings of car crash images are seamlessly stored and queried to find visually similar images, enabling faster claims assessments and decision-making.
+[![Run in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mongodb-industry-solutions/Insurance-image-search/blob/main/image_similarity.ipynb)
 
-- **Rich Query Capabilities:** MongoDB combines vector search with traditional database queries, allowing structured fields (e.g., claim costs, dates, car models) to be queried alongside unstructured data. This hybrid search model streamlines claim cost estimation by enabling comprehensive searches within a single database.
+This repository demonstrates how to build an insurance claims image similarity workflow with MongoDB Vector Search. It embeds vehicle damage photos with a pretrained computer vision model, stores the image vectors and metadata in MongoDB, and retrieves visually similar claims images for faster triage and review.
 
-- **Scalability and Performance:** MongoDB’s distributed architecture ensures the ability to scale horizontally, making it easy to handle large datasets of image embeddings and metadata, ensuring lightning-fast searches and high availability.
+## Capabilities
 
-- **Ease of Integration for AI Workflows:** MongoDB pairs seamlessly with AI/ML use cases by acting as the backbone for storing and analyzing embeddings. This enables smooth integration of pre-trained ML models with real-time or batch similarity searches.
+- Generate image embeddings from vehicle damage photos with a pretrained TorchVision model.
+- Store image binaries, filenames, and embedding vectors in MongoDB Atlas.
+- Query similar insurance claim photos with MongoDB Vector Search.
+- Visualize the query image and top matches directly in a Jupyter notebook.
+- Use a documented MongoDB data model for agent-friendly maintenance.
 
-Learn more about MongoDB [here](https://www.mongodb.com/docs/manual/).
+## Why use MongoDB for image similarity search?
+
+- **Vector storage and similarity search:** MongoDB Vector Search stores image embeddings with the source image documents and retrieves visually similar vehicle damage photos with cosine similarity.
+- **Flexible document model:** MongoDB stores image metadata, binary image payloads and model-generated vectors in a single collection without requiring a rigid relational schema.
 
 ## Tech Stack
 
-### Frontend
-- **Jupyter Notebooks** are used to create interactive data exploration and visualization tools in this demo, providing an environment for running code and displaying results inline. This setup is ideal for iterative development and analysis.
+- **Notebook interface:** Jupyter Notebook for interactive data loading, embedding generation, querying, and visualization.
+- **Language:** Python for data processing, model inference, and MongoDB access.
+- **Machine learning:** TorchVision SqueezeNet for image embedding generation.
+- **Database:** MongoDB Atlas for storing image documents and vectors.
+- **Search:** MongoDB Vector Search for nearest-neighbor retrieval over image embeddings.
+- **Driver:** PyMongo for connecting to MongoDB Atlas.
 
-### Backend
-- **Database**: MongoDB Atlas a fully managed cloud database service, is chosen for its ease of use, scalability, and ability to efficiently handle and query JSON-like documentary data. Its built-in vector search capabilities enable fast and accurate similarity searches on image embeddings.
+## Architecture Overview
 
-- **Language**: Python utilized for its robust ecosystem of libraries suited for machine learning and data processing tasks.
+```mermaid
+flowchart LR
+    A["Vehicle damage image dataset"] --> B["Jupyter notebook"]
+    B --> C["TorchVision SqueezeNet image embedder"]
+    C --> D["1000-dimension image embedding"]
+    B --> E["MongoDB Atlas: claim_resolution.car_damage_photos"]
+    D --> E
+    E --> F["MongoDB Vector Search index on embedding"]
+    G["Query image"] --> C
+    C --> H["$vectorSearch aggregation"]
+    F --> H
+    H --> I["Top similar claim images"]
+```
 
 ## Prerequisites
 
-Before setting up the Insurance Image Search demo, ensure that you have the following prerequisites installed and configured on your system:
+Before running this demo, install or configure:
 
 - [Python 3.10 or above](https://www.python.org/downloads/)
-- [MongoDB Atlas Cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/) 
+- [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
+- Atlas database user credentials with read/write access
+- Network access from your local environment to the Atlas cluster
 
-## Creating Search Index
+## Quick Start
 
-To optimize your data retrieval times and enable efficient search operations, you might need to create an index, particularly if using MongoDB Atlas Search.
+### 1. Clone the repository
 
-Setup a Search Index:
-1. Navigate to your MongoDB Atlas Cluster.
-2. Go to the "Collections" tab and select the appropriate collection.
-3. Open the "Search" tab and click on "Create Search Index".
-4. Use the Following Index Definition:
-
-Copy and paste the JSON document below into the index configuration field to define an efficient search configuration for your collection:
-```json
-{
-  "mappings": {
-    "dynamic": true,
-    "fields": {
-      "embedding": {
-        "dimensions": 1000,
-        "similarity": "cosine",
-        "type": "knnVector"
-      }
-    }
-  }
-}
+```bash
+git clone https://github.com/mongodb-industry-solutions/Insurance-image-search.git
+cd Insurance-image-search
 ```
 
-## Adding Environment Variables
+### 2. Create a Python environment
 
-To connect your Jupyter Notebook to your MongoDB cluster, you'll need to update the uri variable with the correct connection string for your cluster.
-
-### Steps to Update the Connection URI:
-1. Locate Your Connection String:
-Log in to MongoDB Atlas and navigate to your cluster. Find the connection string provided for your cluster.
-
-2. Modify the URI in Your Notebook:
-Replace the placeholder text in the uri variable with your actual connection details. Ensure you update the username, password, and cluster name as per your MongoDB Atlas configuration.
-
-```
-uri = "mongodb+srv://<username>:<password>@<clustername>.n0kts.mongodb.net/?retryWrites=true&w=majority"
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-# Example
+### 3. Configure MongoDB Atlas
 
-Here's an example of a query of an image found online
+Create a free or dedicated [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/), then set your connection string as an environment variable:
 
-![](test.jpg)
+```bash
+export MONGODB_URI="mongodb+srv://<username>:<password>@<cluster-name>/?retryWrites=true&w=majority"
+```
 
-And its output
+### 4. Run the notebook
 
-![](top_5.png)
+```bash
+jupyter notebook image_similarity.ipynb
+```
+
+Run the cells in order. The notebook downloads a sample car damage image dataset, writes images to `car_damage/`, inserts image documents into MongoDB Atlas, builds a vector search index and queries for similar images.
+
+## Data Model
+
+The notebook writes documents to:
+
+```text
+Database: claim_resolution
+Collection: car_damage_photos
+```
+
+Each document stores:
+
+- `filename`: source image filename.
+- `data`: image binary data.
+- `embedding`: 1000-dimension image vector generated by TorchVision SqueezeNet.
+
+See [EDD.md](./EDD.md) for the full entity document diagram, field definitions, index contract, and Mermaid schema diagram.
+
+## Testing
+
+Run the default notebook contract tests:
+
+```bash
+python -m pip install -r requirements-dev.txt
+pytest -m "not integration"
+```
+
+Run the Atlas-backed end-to-end notebook test when you have a test cluster and matching Vector Search index:
+
+```bash
+export MONGODB_URI="mongodb+srv://<username>:<password>@<cluster-name>/?retryWrites=true&w=majority"
+export NOTEBOOK_MAX_DATASET_IMAGES=5
+export NOTEBOOK_CLEAR_COLLECTION=true
+python -m pip install -r requirements.txt -r requirements-dev.txt
+pytest -m integration
+```
+
+`NOTEBOOK_CLEAR_COLLECTION=true` clears `claim_resolution.car_damage_photos` before loading the test data. Use it only with a disposable test database.
+
+## Example
+
+Example query image:
+
+![Vehicle damage query image](test.jpg)
+
+Example top-5 similar image output:
+
+![Top five similar vehicle damage images](top_5.png)
+
+## Additional Resources
+
+- [MongoDB Vector Search documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/)
+- [PyMongo driver documentation](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/)
+- [TorchVision model documentation](https://pytorch.org/vision/stable/models.html)
+- [MongoDB aggregation documentation](https://www.mongodb.com/docs/manual/aggregation/)
+
+## License
+
+[Apache 2.0](LICENSE)
+
+## Disclaimer
+
+This repository is for educational use and is not a supported MongoDB product.

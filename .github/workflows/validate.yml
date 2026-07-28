@@ -1,0 +1,39 @@
+name: Validate notebook and tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+        - name: Run notebook smoke tests
+        run: pytest -m "not integration"
+
+      - name: Run notebook integration test
+        if: env.MONGODB_URI != ''
+        env:
+          NOTEBOOK_MAX_DATASET_IMAGES: "5"
+          NOTEBOOK_CLEAR_COLLECTION: "true"
+        run: |
+          python -m pip install -r requirements.txt
+          pytest -m integration
