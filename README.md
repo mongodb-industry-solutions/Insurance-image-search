@@ -146,8 +146,8 @@ Example top-5 similar image output:
 
 ## Additional Resources
 
-- [MongoDB Vector Search documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/?utm_campaign=devrel&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel&utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
-- [PyMongo driver documentation](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/?utm_campaign=devrel&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel&utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
+- [MongoDB Vector Search documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
+- [PyMongo driver documentation](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
 - [TorchVision model documentation](https://pytorch.org/vision/stable/models.html)
 - [MongoDB aggregation documentation](https://www.mongodb.com/docs/manual/aggregation/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
 
