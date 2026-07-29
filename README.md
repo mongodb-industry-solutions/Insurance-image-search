@@ -58,7 +58,7 @@ flowchart LR
 Before running this demo, install or configure:
 
 - [Python 3.10 or above](https://www.python.org/downloads/)
-- [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
+- [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
 - Atlas database user credentials with read/write access
 - Network access from your local environment to the Atlas cluster
 
@@ -82,7 +82,7 @@ python -m pip install -r requirements.txt
 
 ### 3. Configure MongoDB Atlas
 
-Create a free or dedicated [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/), then set your connection string as an environment variable:
+Create a free or dedicated [MongoDB Atlas cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel), then set your connection string as an environment variable:
 
 ```bash
 export MONGODB_URI="mongodb+srv://<username>:<password>@<cluster-name>/?retryWrites=true&w=majority"
@@ -146,10 +146,10 @@ Example top-5 similar image output:
 
 ## Additional Resources
 
-- [MongoDB Vector Search documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/)
-- [PyMongo driver documentation](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/)
+- [MongoDB Vector Search documentation](https://www.mongodb.com/docs/atlas/atlas-vector-search/?utm_campaign=devrel&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel&utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
+- [PyMongo driver documentation](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/?utm_campaign=devrel&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel&utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
 - [TorchVision model documentation](https://pytorch.org/vision/stable/models.html)
-- [MongoDB aggregation documentation](https://www.mongodb.com/docs/manual/aggregation/)
+- [MongoDB aggregation documentation](https://www.mongodb.com/docs/manual/aggregation/?utm_campaign=devrel&utm_source=github&utm_medium=cta&utm_content=insurance.image.search&utm_term=learning.fuel)
 
 ## License
 
