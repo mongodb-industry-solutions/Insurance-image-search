@@ -1,7 +1,7 @@
 datasets
 jupyter
 matplotlib
-pillow===11.3.0
+pillow===12.3.0
 pymongo
 torch
 torchvision
