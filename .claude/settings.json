@@ -73,7 +73,8 @@
       "Bash(printenv:*)",
       "Bash(env)",
       "Bash(export:*)",
-      "Bash(echo *)"
+      "Bash(echo *)",
+      "TEST"
     ]
   }
 }
